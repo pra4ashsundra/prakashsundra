@@ -20,8 +20,10 @@
             })
             .then(response => response.json())
             .then(data => {
+                // Round the gold price to two decimal places
+                const goldPrice = data.price.toFixed(2);
                 // Displaying the gold price on the webpage
-                document.getElementById('goldPrice').innerHTML = `Current Gold Price: $${data.price}`;
+                document.getElementById('goldPrice').innerHTML = `Current Gold Price: $${goldPrice}`;
             })
             .catch(error => {
                 console.error('Error fetching gold price:', error);
@@ -29,9 +31,13 @@
             });
         }
 
-        // Call the function to fetch gold price when the page loads
-        window.onload = fetchGoldPrice;
+        // Call the function to fetch gold price initially
+        fetchGoldPrice();
+
+        // Refresh the gold price every 0.5 second
+        setInterval(fetchGoldPrice, 500);
     </script>
 </body>
 </html>
+
 
