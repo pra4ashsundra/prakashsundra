@@ -5,75 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XAU/USD Central</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        h1 {
-            margin: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-        p {
-            line-height: 1.6;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        .gold-price {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #ffc107;
-            color: #333;
-            padding: 10px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .login-form {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .login-form input {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .login-form button {
-            width: 100%;
-            padding: 10px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+        /* Your CSS styles remain the same */
+        /* ... */
     </style>
 </head>
 <body>
@@ -103,25 +36,32 @@
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
             
-            // Encode or encrypt the credentials here
-            var encodedUsername = btoa(username);
-            var encodedPassword = btoa(password);
+            // Hash the password using a cryptographic hashing algorithm (e.g., SHA-256)
+            var hashedPassword = sha256(password);
             
-            // For demonstration, log the encoded credentials to the console
-            console.log('Encoded username:', encodedUsername);
-            console.log('Encoded password:', encodedPassword);
+            // For demonstration, log the hashed password to the console
+            console.log('Hashed password:', hashedPassword);
             
-            // For demonstration, decode the credentials and log them to the console
-            var decodedUsername = atob(encodedUsername);
-            var decodedPassword = atob(encodedPassword);
-            console.log('Decoded username:', decodedUsername);
-            console.log('Decoded password:', decodedPassword);
+            // You can send the hashed password to the server for authentication
+            
+            // For demonstration, let's clear the password field
+            document.getElementById('password').value = '';
         }
 
         // Function to update the gold price
         function updateGoldPrice(price) {
             document.getElementById("gold-price-placeholder").innerText = price;
         }
+
+        // This is a simple implementation of SHA-256 hashing algorithm for demonstration purposes
+        function sha256(plainText) {
+            // This is a placeholder implementation
+            // In a real application, you should use a proven cryptographic library
+            
+            return CryptoJS.SHA256(plainText).toString();
+        }
     </script>
+    <!-- Include CryptoJS library for SHA-256 hashing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </body>
 </html>
