@@ -1,44 +1,3 @@
-import feedparser
-from bs4 import BeautifulSoup
-from datetime import datetime
-
-# Function to fetch and parse RSS feed
-def parse_rss_feed(rss_url):
-    feed = feedparser.parse(rss_url)
-    entries = []
-    for entry in feed.entries:
-        title = entry.title
-        link = entry.link
-        published = entry.published_parsed
-        published_str = datetime.fromtimestamp(published).strftime('%Y-%m-%d %H:%M:%S')
-        summary = entry.summary
-        soup = BeautifulSoup(summary, 'html.parser')
-        summary_text = soup.get_text()
-        entries.append({'title': title, 'link': link, 'published': published_str, 'summary': summary_text})
-    return entries
-
-# Function to generate HTML content from parsed RSS data
-def generate_html_content(entries):
-    html_content = '<div class="rss-feed">'
-    for entry in entries:
-        html_content += '<div class="rss-entry">'
-        html_content += f'<h3><a href="{entry["link"]}">{entry["title"]}</a></h3>'
-        html_content += f'<p><strong>Published:</strong> {entry["published"]}</p>'
-        html_content += f'<p>{entry["summary"]}</p>'
-        html_content += '</div>'
-    html_content += '</div>'
-    return html_content
-
-# Example RSS feed URL
-rss_url = 'https://www.investing.com/rss/news_11.rss'
-# Parse RSS feed
-entries = parse_rss_feed(rss_url)
-
-# Generate HTML content
-html_content = generate_html_content(entries)
-
-# Insert HTML content into the provided HTML template
-html_template = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,11 +14,8 @@ html_template = """
         <h1>XAU/USD Central</h1>
     </header>
     <div class="container">
-        <p>This is a simple HTML file with the real-time gold price and RSS feed.</p>
+        <p>This is a simple HTML file with the real-time gold price.</p>
         <p>You can modify and expand it as needed.</p>
-    </div>
-    <div class="rss-feed">
-        """ + html_content + """
     </div>
     <footer>
         <p>&copy; 2024 Real-time Gold Price</p>
@@ -75,8 +31,3 @@ html_template = """
     </script>
 </body>
 </html>
-"""
-
-# Save the generated HTML content to a file
-with open('index.html', 'w') as f:
-    f.write(html_template)
