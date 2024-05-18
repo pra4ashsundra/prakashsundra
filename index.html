@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XAU/USD Central</title>
     <style>
-        /* Your CSS styles */
-        /* Example: */
+        /* CSS styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -34,10 +33,27 @@
             padding: 10px 0;
         }
 
+        /* Updated gold-price styles */
         .gold-price {
-            font-size: 18px;
-            text-align: center;
-            margin-bottom: 20px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ffd700; /* Gold color */
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for the gold price label */
+        .gold-price-label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Style for the gold price value */
+        .gold-price-value {
+            font-size: 24px;
         }
     </style>
 </head>
@@ -52,8 +68,9 @@
     <footer>
         <p>&copy; 2024 Real-time Gold Price</p>
     </footer>
+    <!-- Updated gold-price element with separate span for label and value -->
     <div class="gold-price">
-        Real-time Gold Price: <span id="gold-price-placeholder">2,419.80</span>
+        <span class="gold-price-label">Real-time Gold Price:</span> <span id="gold-price-placeholder" class="gold-price-value">2,419.80</span>
     </div>
 
     <script>
