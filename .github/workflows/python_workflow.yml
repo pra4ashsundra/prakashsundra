@@ -1,0 +1,24 @@
+name: Python Workflow
+
+on:
+  push:
+    branches:
+      - main  # Adjust branch name as needed
+
+jobs:
+  run_python_script:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Choose the appropriate Python version
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt  # Adjust if you have dependencies
+
+    - name: Run Python script
+      run: get_gold_price.py  # Replace with the name of your Python script
