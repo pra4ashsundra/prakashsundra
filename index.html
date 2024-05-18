@@ -37,6 +37,16 @@
             bottom: 0;
             width: 100%;
         }
+        .gold-price {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ffc107;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -44,13 +54,15 @@
         <h1>XAU/USD Central</h1>
     </header>
     <div class="container">
-        <p>Real-time Gold Price: 2,419.80</p>
         <p>This is a simple HTML file with the real-time gold price.</p>
         <p>You can modify and expand it as needed.</p>
     </div>
     <footer>
         <p>&copy; 2024 Real-time Gold Price</p>
     </footer>
+    <div class="gold-price">
+        Real-time Gold Price: <span id="gold-price-placeholder">2,419.80</span>
+    </div>
     <script>
         // Function to update the gold price
         function updateGoldPrice(price) {
