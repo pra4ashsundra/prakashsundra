@@ -5,8 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XAU/USD Central</title>
     <style>
-        /* Your CSS styles remain the same */
-        /* ... */
+        /* Your CSS styles */
+        /* Example: */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .gold-price {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .rss-feed {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .rss-entry {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+
+        .rss-entry h3 {
+            margin-top: 0;
+        }
+
+        .rss-entry p {
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -23,11 +78,40 @@
     <div class="gold-price">
         Real-time Gold Price: <span id="gold-price-placeholder">2,419.80</span>
     </div>
+
+    <!-- RSS Feed Section -->
+    <section class="rss-feed">
+        <h2>RSS Feed</h2>
+        <div id="rss-feed-container">
+            <!-- RSS feed entries will be inserted here -->
+        </div>
+    </section>
+
     <script>
         // Function to update the gold price
         function updateGoldPrice(price) {
             document.getElementById("gold-price-placeholder").innerText = price;
         }
+
+        // Fetch RSS feed data and insert into HTML
+        fetch('rss_feed.csv')
+            .then(response => response.text())
+            .then(data => {
+                const rows = data.trim().split('\n');
+                const container = document.getElementById('rss-feed-container');
+                rows.forEach(row => {
+                    const [title, link, published, summary] = row.split(',');
+                    const entryHTML = `
+                        <div class="rss-entry">
+                            <h3><a href="${link}">${title}</a></h3>
+                            <p><strong>Published:</strong> ${published}</p>
+                            <p>${summary}</p>
+                        </div>
+                    `;
+                    container.innerHTML += entryHTML;
+                });
+            })
+            .catch(error => console.error('Error fetching RSS feed:', error));
     </script>
 </body>
 </html>
