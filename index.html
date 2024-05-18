@@ -103,12 +103,19 @@
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
             
-            if (username === 'admin' && password === 'xauusd') {
-                document.querySelector('.container').style.display = 'block';
-                document.querySelector('.login-form').style.display = 'none';
-            } else {
-                alert('Invalid username or password. Please try again.');
-            }
+            // Encode or encrypt the credentials here
+            var encodedUsername = btoa(username);
+            var encodedPassword = btoa(password);
+            
+            // For demonstration, log the encoded credentials to the console
+            console.log('Encoded username:', encodedUsername);
+            console.log('Encoded password:', encodedPassword);
+            
+            // For demonstration, decode the credentials and log them to the console
+            var decodedUsername = atob(encodedUsername);
+            var decodedPassword = atob(encodedPassword);
+            console.log('Decoded username:', decodedUsername);
+            console.log('Decoded password:', decodedPassword);
         }
 
         // Function to update the gold price
