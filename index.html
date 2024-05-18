@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML with CSS</title>
+    <title>Real-time Gold Price</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -41,14 +41,33 @@
 </head>
 <body>
     <header>
-        <h1>Simple HTML with CSS</h1>
+        <h1>Real-time Gold Price</h1>
     </header>
     <div class="container">
-        <p>This is a simple HTML file with inline CSS styles.</p>
-        <p>You can modify and expand it as needed.</p>
+        <p id="goldPrice">Fetching real-time gold price...</p>
     </div>
     <footer>
-        <p>&copy; 2024 Simple HTML</p>
+        <p>&copy; 2024 Real-time Gold Price</p>
     </footer>
+    <script>
+        // Function to update the gold price
+        function updateGoldPrice() {
+            fetch('gold_price.py')
+            .then(response => response.text())
+            .then(data => {
+                // Display the gold price on the webpage
+                document.getElementById('goldPrice').textContent = 'Real-time Gold Price: ' + data;
+            })
+            .catch(error => {
+                console.error('Failed to fetch gold price:', error);
+            });
+        }
+
+        // Update the gold price initially
+        updateGoldPrice();
+
+        // Update the gold price every 30 seconds (30000 milliseconds)
+        setInterval(updateGoldPrice, 30000);
+    </script>
 </body>
 </html>
