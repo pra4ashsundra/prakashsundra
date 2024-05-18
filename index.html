@@ -105,7 +105,7 @@
                 const container = document.getElementById('rss-feed-container');
                 rows.forEach(row => {
                     const [title, link, published, summary] = row.split(',');
-                    if (title.toLowerCase().includes('gold') || summary.toLowerCase().includes('gold')) {
+                    if (/\bgold\b/i.test(title) || /\bgold\b/i.test(summary)) {
                         const entryHTML = `
                             <div class="rss-entry">
                                 <h3><a href="${link}">${title}</a></h3>
