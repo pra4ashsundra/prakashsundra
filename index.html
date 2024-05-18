@@ -4,25 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real-time Gold Price</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <h1>Real-time Gold Price</h1>
-    <p id="goldPrice"></p>
+    <div id="goldPrice"></div>
 
     <script>
-        $(document).ready(function() {
-            $.ajax({
-                url: "get_gold_price.py",
-                success: function(data) {
-                    $("#goldPrice").text(data);
-                },
-                error: function(xhr, status, error) {
-                    $("#goldPrice").text("Failed to fetch gold price.");
-                    console.error(xhr.responseText);
-                }
+        // Fetch the gold price from the website
+        fetch('https://www.investing.com/commodities/gold')
+            .then(response => response.text())
+            .then(data => {
+                // Parse the HTML content
+                const parser = new DOMParser();
+                const htmlDocument = parser.parseFromString(data, 'text/html');
+
+                // Find the element containing the gold price
+                const priceElement = htmlDocument.querySelector('.text-5xl/9[data-test="instrument-price-last"]');
+
+                // Extract the gold price text
+                const goldPrice = priceElement ? priceElement.textContent.trim() : 'N/A';
+
+                // Display the gold price on the webpage
+                document.getElementById('goldPrice').textContent = 'Real-time Gold Price: ' + goldPrice;
+            })
+            .catch(error => {
+                console.error('Error fetching gold price:', error);
+                document.getElementById('goldPrice').textContent = 'Failed to fetch gold price';
             });
-        });
     </script>
 </body>
 </html>
