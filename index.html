@@ -8,22 +8,19 @@
 </head>
 <body>
     <h1>Real-time Gold Price</h1>
-    <button id="fetchPrice">Fetch Gold Price</button>
     <p id="goldPrice"></p>
 
     <script>
         $(document).ready(function() {
-            $("#fetchPrice").click(function() {
-                $.ajax({
-                    url: "get_gold_price.py",
-                    success: function(data) {
-                        $("#goldPrice").text(data);
-                    },
-                    error: function(xhr, status, error) {
-                        $("#goldPrice").text("Failed to fetch gold price.");
-                        console.error(xhr.responseText);
-                    }
-                });
+            $.ajax({
+                url: "get_gold_price.py",
+                success: function(data) {
+                    $("#goldPrice").text(data);
+                },
+                error: function(xhr, status, error) {
+                    $("#goldPrice").text("Failed to fetch gold price.");
+                    console.error(xhr.responseText);
+                }
             });
         });
     </script>
