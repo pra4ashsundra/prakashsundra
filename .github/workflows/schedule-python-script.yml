@@ -13,10 +13,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4 # Update to use the latest version supporting Node.js 20
+        uses: actions/checkout@v4 # Updated to the latest version
 
       - name: Set up Python
-        uses: actions/setup-python@v5 # Update to use the latest version supporting Node.js 20
+        uses: actions/setup-python@v5 # Updated to the latest version
         with:
           python-version: '3.x' # Specify the Python version you need.
 
@@ -26,4 +26,8 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Run Python script
-        run: python path/to/get_gold_price.py
+        run: |
+          echo "Running get_gold_price.py"
+          python path/to/get_gold_price.py
+        env:
+          DEBUG: 'true'
