@@ -13,15 +13,7 @@
     <header>
         <h1>XAU/USD Central</h1>
     </header>
-    <div class="login-form">
-        <h2>Login</h2>
-        <form id="login-form" onsubmit="return false;">
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button onclick="login()">Login</button>
-        </form>
-    </div>
-    <div class="container" style="display: none;">
+    <div class="container">
         <p>This is a simple HTML file with the real-time gold price.</p>
         <p>You can modify and expand it as needed.</p>
     </div>
@@ -32,36 +24,10 @@
         Real-time Gold Price: <span id="gold-price-placeholder">2,419.80</span>
     </div>
     <script>
-        function login() {
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            
-            // Hash the password using a cryptographic hashing algorithm (e.g., SHA-256)
-            var hashedPassword = sha256(password);
-            
-            // For demonstration, log the hashed password to the console
-            console.log('Hashed password:', hashedPassword);
-            
-            // You can send the hashed password to the server for authentication
-            
-            // For demonstration, let's clear the password field
-            document.getElementById('password').value = '';
-        }
-
         // Function to update the gold price
         function updateGoldPrice(price) {
             document.getElementById("gold-price-placeholder").innerText = price;
         }
-
-        // This is a simple implementation of SHA-256 hashing algorithm for demonstration purposes
-        function sha256(plainText) {
-            // This is a placeholder implementation
-            // In a real application, you should use a proven cryptographic library
-            
-            return CryptoJS.SHA256(plainText).toString();
-        }
     </script>
-    <!-- Include CryptoJS library for SHA-256 hashing -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </body>
 </html>
