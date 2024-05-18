@@ -47,13 +47,48 @@
             border-radius: 5px;
             font-weight: bold;
         }
+        .login-form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .login-form input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>XAU/USD Central</h1>
     </header>
-    <div class="container">
+    <div class="login-form">
+        <h2>Login</h2>
+        <form id="login-form" onsubmit="return false;">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button onclick="login()">Login</button>
+        </form>
+    </div>
+    <div class="container" style="display: none;">
         <p>This is a simple HTML file with the real-time gold price.</p>
         <p>You can modify and expand it as needed.</p>
     </div>
@@ -64,6 +99,18 @@
         Real-time Gold Price: <span id="gold-price-placeholder">2,419.80</span>
     </div>
     <script>
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            
+            if (username === 'admin' && password === 'xauusd') {
+                document.querySelector('.container').style.display = 'block';
+                document.querySelector('.login-form').style.display = 'none';
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        }
+
         // Function to update the gold price
         function updateGoldPrice(price) {
             document.getElementById("gold-price-placeholder").innerText = price;
