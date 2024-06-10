@@ -3,81 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XAU/USD Central</title>
+    <title>Welcome to Prakash Jyotisa</title>
     <style>
-        /* CSS styles */
         body {
             font-family: Arial, sans-serif;
+            background-color: #e0d5b9; /* Light brown */
+            color: #524e4c; /* Dark brown */
             margin: 0;
             padding: 0;
-            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
         .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
             text-align: center;
-            padding: 10px 0;
         }
-
-        /* Updated gold-price styles */
-        .gold-price {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #ffd700; /* Gold color */
-            color: #333;
-            padding: 10px;
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #3b3029; /* Dark brown */
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #947764; /* Brown */
+            color: #ffffff; /* White */
+            padding: 10px 20px;
+            font-size: 1.2em;
+            text-decoration: none;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
         }
-
-        /* Style for the gold price label */
-        .gold-price-label {
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        /* Style for the gold price value */
-        .gold-price-value {
-            font-size: 24px;
+        .button:hover {
+            background-color: #6e5846; /* Dark brown */
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>XAU/USD Central</h1>
-    </header>
     <div class="container">
-        <p>This is a simple HTML file with the real-time gold price.</p>
-        <p>You can modify and expand it as needed.</p>
+        <h1>Welcome to Prakash Jyotisa</h1>
+        <p>Thank you for visiting our Vedic Astrology Consultation and Academy page.</p>
+        <a href="#" class="button">Explore Now</a>
     </div>
-    <footer>
-        <p>&copy; 2024 Real-time Gold Price</p>
-    </footer>
-    <!-- Updated gold-price element with separate span for label and value -->
-    <div class="gold-price">
-        <span class="gold-price-label">Real-time Gold Price:</span> <span id="gold-price-placeholder" class="gold-price-value">2,419.80</span>
-    </div>
-
-    <script>
-        // Function to update the gold price
-        function updateGoldPrice(price) {
-            document.getElementById("gold-price-placeholder").innerText = price;
-        }
-    </script>
 </body>
 </html>
