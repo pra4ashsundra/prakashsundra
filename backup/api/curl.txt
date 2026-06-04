@@ -1,0 +1,18 @@
+To retrieve group id number in WhatsApp:
+curl -X GET "https://wasenderapi.com/api/groups" -H "Authorization: Bearer 8e2a7e6bef238ca4d33006551e686ecdb45aa8ba2e12a0d8ab8ddbc6a41501c6" -H "Content-Type: application/json"
+
+To get access token from Prokerala:
+curl -X POST "https://api.prokerala.com/token" -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=client_credentials&client_id=73b53fba-5f6c-4861-b281-d62c7348d3f9&client_secret=LOJCbWn2PBB2K8n7lsp2ee73K1mhuzAHKSKI4f6l"
+
+To retrieve birth details:
+curl -s -X GET "https://api.prokerala.com/v2/astrology/birth-details?ayanamsa=1&coordinates=1.4927,103.7414&datetime=1975-12-14T16:20:00%2B08:00&la=en" -H "Authorization: Bearer $(curl -s -X POST 'https://api.prokerala.com/token' -H 'Content-Type: application/x-www-form-urlencoded' -d 'grant_type=client_credentials&client_id=73b53fba-5f6c-4861-b281-d62c7348d3f9&client_secret=LOJCbWn2PBB2K8n7lsp2ee73K1mhuzAHKSKI4f6l' | sed -n 's/.*"access_token":"\([^"]*\)".*/\1/p')"
+
+To retrieve Sade Sati phase
+curl -s -X GET "https://api.prokerala.com/v2/astrology/sade-sati/advanced?ayanamsa=1&coordinates=1.4927,103.7414&datetime=1975-12-14T16:20:00%2B08:00" -H "Authorization: Bearer $(curl -s -X POST 'https://api.prokerala.com/token' -H 'Content-Type: application/x-www-form-urlencoded' -d 'grant_type=client_credentials&client_id=73b53fba-5f6c-4861-b281-d62c7348d3f9&client_secret=LOJCbWn2PBB2K8n7lsp2ee73K1mhuzAHKSKI4f6l' | sed -n 's/.*"access_token":"\([^"]*\)".*/\1/p')"
+
+To retrieve muhurtam:
+--------------------
+curl -s -X GET "https://api.prokerala.com/v2/astrology/panchang/advanced?ayanamsa=1&coordinates=1.479900,103.764300&datetime=$(date -u +"%Y-%m-%dT%H:%M:%S")%2B08:00&la=en" -H "Authorization: Bearer $(curl -s -X POST https://api.prokerala.com/token -d 'grant_type=client_credentials&client_id=73b53fba-5f6c-4861-b281-d62c7348d3f9&client_secret=LOJCbWn2PBB2K8n7lsp2ee73K1mhuzAHKSKI4f6l' | grep -o '"access_token":"[^"]*' | cut -d'"' -f4)"
+
+
+
